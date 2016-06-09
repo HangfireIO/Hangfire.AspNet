@@ -5,6 +5,16 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.IIS", "src\Hangfire.IIS\Hangfire.IIS.csproj", "{DC6F0777-E99D-49DC-8A7C-84B087C84738}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspecs", "nuspecs", "{9379DDA0-2EB5-4DFB-B997-02637E11877E}"
+	ProjectSection(SolutionItems) = preProject
+		nuspecs\Hangfire.IIS.nuspec = nuspecs\Hangfire.IIS.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{10680C76-AE48-45A8-B749-2955D3673073}"
+	ProjectSection(SolutionItems) = preProject
+		psake-project.ps1 = psake-project.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
