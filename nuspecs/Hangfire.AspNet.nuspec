@@ -8,7 +8,7 @@
     <owners>odinserj</owners>
     <projectUrl>http://hangfire.io/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://raw.github.com/HangfireIO/Hangfire/master/LICENSE.md</licenseUrl>
+    <licenseUrl>https://raw.githubusercontent.com/HangfireIO/Hangfire.AspNet/master/LICENSE</licenseUrl>
     <description>ASP.NET integration for Hangfire.</description>
     <copyright>Copyright © 2016 Sergey Odinokov</copyright>
     <tags>hangfire aspnet iis</tags>
