@@ -1,6 +1,6 @@
 Framework 4.5.1
 Properties {
-    $solution = "Hangfire.IIS.sln"
+    $solution = "Hangfire.AspNet.sln"
 }
 
 Include "packages\Hangfire.Build.0.1.3\tools\psake-common.ps1"
@@ -8,7 +8,7 @@ Include "packages\Hangfire.Build.0.1.3\tools\psake-common.ps1"
 Task Default -Depends Collect
 
 Task Collect -Depends Compile -Description "Copy all artifacts to the build folder." {
-    Collect-Assembly "Hangfire.IIS" "Net45"
+    Collect-Assembly "Hangfire.AspNet" "Net45"
 }
 
 Task Pack -Depends Collect -Description "Create NuGet packages and archive files." {
@@ -20,6 +20,6 @@ Task Pack -Depends Collect -Description "Create NuGet packages and archive files
         $version = $tag.Substring(1)
     }
     
-    Create-Archive "Hangfire.IIS-$version"
-    Create-Package "Hangfire.IIS" $version
+    Create-Archive "Hangfire.AspNet-$version"
+    Create-Package "Hangfire.AspNet" $version
 }

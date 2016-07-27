@@ -1,29 +1,28 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Hangfire.IIS</id>
+    <id>Hangfire.AspNet</id>
     <version>0.0.0</version>
-    <title>Hangfire IIS integration</title>
+    <title>Hangfire ASP.NET integration</title>
     <authors>Sergey Odinokov</authors>
     <owners>odinserj</owners>
     <projectUrl>http://hangfire.io/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://raw.github.com/HangfireIO/Hangfire/master/LICENSE.md</licenseUrl>
-    <description>IIS integration for Hangfire.</description>
+    <description>ASP.NET integration for Hangfire.</description>
     <copyright>Copyright © 2016 Sergey Odinokov</copyright>
-    <tags>Hangfire IIS</tags>
+    <tags>hangfire aspnet iis</tags>
     <releaseNotes>http://hangfire.io/blog/
     </releaseNotes>
     <dependencies>
-      <dependency id="Owin" version="1.0" />
       <dependency id="Hangfire.Core" version="1.5.0" />
       <dependency id="Microsoft.Owin.Host.SystemWeb" version="2.1.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="Net45\Hangfire.IIS.dll" target="lib\net45" />
-    <file src="Net45\Hangfire.IIS.xml" target="lib\net45" />
-    <file src="Net45\Hangfire.IIS.pdb" target="lib\net45" />
-    <file src="..\src\Hangfire.IIS\**\*.cs" target="src" />
+    <file src="Net45\Hangfire.AspNet.dll" target="lib\net45" />
+    <file src="Net45\Hangfire.AspNet.xml" target="lib\net45" />
+    <file src="Net45\Hangfire.AspNet.pdb" target="lib\net45" />
+    <file src="..\src\Hangfire.AspNet\**\*.cs" target="src" />
   </files>
 </package>

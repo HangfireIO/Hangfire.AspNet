@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using Hangfire.Annotations;
+using Hangfire.AspNet;
 using Owin;
 
-namespace Hangfire.IIS
+// ReSharper disable once CheckNamespace
+namespace Hangfire
 {
-    public static class AspNetHangfireServer
+    public static class HangfireAspNet
     {
         private static readonly RegisteredObjectWrapper Instance = new RegisteredObjectWrapper();
-
+        
         /// <summary>
         /// Call this in global.asax for debugging purposes
         /// </summary>
@@ -19,7 +21,7 @@ namespace Hangfire.IIS
             Instance.Start(configuration);
         }
 
-        public static IAppBuilder UseHangfire(
+        public static IAppBuilder UseHangfireAspNet(
             [NotNull] this IAppBuilder builder,
             [NotNull] Func<IEnumerable<IDisposable>> configuration)
         {

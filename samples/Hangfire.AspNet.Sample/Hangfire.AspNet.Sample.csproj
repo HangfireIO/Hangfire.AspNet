@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hangfire.IIS.Sample</RootNamespace>
-    <AssemblyName>Hangfire.IIS.Sample</AssemblyName>
+    <RootNamespace>Hangfire.AspNet.Sample</RootNamespace>
+    <AssemblyName>Hangfire.AspNet.Sample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -43,8 +43,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Hangfire.Core, Version=1.5.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Hangfire.Core.1.5.7\lib\net45\Hangfire.Core.dll</HintPath>
+    <Reference Include="Hangfire.Core, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Hangfire.Core.1.6.0\lib\net45\Hangfire.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Hangfire.MemoryStorage, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -114,7 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationPreload.cs" />
@@ -141,9 +143,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Hangfire.IIS\Hangfire.IIS.csproj">
+    <ProjectReference Include="..\..\src\Hangfire.AspNet\Hangfire.AspNet.csproj">
       <Project>{dc6f0777-e99d-49dc-8a7c-84b087c84738}</Project>
-      <Name>Hangfire.IIS</Name>
+      <Name>Hangfire.AspNet</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

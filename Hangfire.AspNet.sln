@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.IIS", "src\Hangfire.IIS\Hangfire.IIS.csproj", "{DC6F0777-E99D-49DC-8A7C-84B087C84738}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.AspNet", "src\Hangfire.AspNet\Hangfire.AspNet.csproj", "{DC6F0777-E99D-49DC-8A7C-84B087C84738}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspecs", "nuspecs", "{9379DDA0-2EB5-4DFB-B997-02637E11877E}"
 	ProjectSection(SolutionItems) = preProject
-		nuspecs\Hangfire.IIS.nuspec = nuspecs\Hangfire.IIS.nuspec
+		nuspecs\Hangfire.AspNet.nuspec = nuspecs\Hangfire.AspNet.nuspec
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{10680C76-AE48-45A8-B749-2955D3673073}"
@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{10680C76
 		psake-project.ps1 = psake-project.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.IIS.Sample", "samples\Hangfire.IIS.Sample\Hangfire.IIS.Sample.csproj", "{1C747619-39DE-4B3F-907B-F5A94263674D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.AspNet.Sample", "samples\Hangfire.AspNet.Sample\Hangfire.AspNet.Sample.csproj", "{1C747619-39DE-4B3F-907B-F5A94263674D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

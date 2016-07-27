@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Hosting;
+using Hangfire.Server;
 
-namespace Hangfire.IIS
+namespace Hangfire.AspNet
 {
-    internal class RegisteredObjectWrapper : IRegisteredObject
+    internal class RegisteredObjectWrapper : IRegisteredObject//, IStopListeningRegisteredObject
     {
         private readonly object _syncRoot = new object();
         private bool _started;
@@ -49,6 +50,18 @@ namespace Hangfire.IIS
                 // TODO: Shoult it be called in immediate only?
                 // TODO: Where to call it, before or after disposal?
                 HostingEnvironment.UnregisterObject(this);
+            }
+        }
+
+        public void StopListening()
+        {
+            foreach (var disposable in _disposables)
+            {
+                var jobServer = disposable as BackgroundJobServer;
+                jobServer?.SendStop();
+
+                var processingServer = disposable as BackgroundProcessingServer;
+                processingServer?.SendStop();
             }
         }
     }
