@@ -16,7 +16,7 @@
     </releaseNotes>
     <dependencies>
       <dependency id="Hangfire.Core" version="1.5.0" />
-      <dependency id="Microsoft.Owin.Host.SystemWeb" version="2.1.0" />
+      <dependency id="Microsoft.Owin.Host.SystemWeb" version="3.0.1" />
     </dependencies>
   </metadata>
   <files>
