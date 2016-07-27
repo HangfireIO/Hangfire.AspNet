@@ -1,4 +1,4 @@
-# Hangfire.IIS 
+# Hangfire.AspNet
 
 [![GitHub release](https://img.shields.io/github/release/HangfireIO/Hangfire.IIS.svg?maxAge=3600)](https://github.com/HangfireIO/Hangfire.IIS/releases)
 [![license](https://img.shields.io/github/license/HangfireIO/Hangfire.IIS.svg?maxAge=3600)](https://github.com/HangfireIO/Hangfire.IIS/blob/master/LICENSE)
