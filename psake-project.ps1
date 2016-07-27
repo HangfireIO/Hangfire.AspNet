@@ -3,22 +3,16 @@ Properties {
     $solution = "Hangfire.AspNet.sln"
 }
 
-Include "packages\Hangfire.Build.0.1.3\tools\psake-common.ps1"
+Include "packages\Hangfire.Build.0.2.5\tools\psake-common.ps1"
 
 Task Default -Depends Collect
 
 Task Collect -Depends Compile -Description "Copy all artifacts to the build folder." {
-    Collect-Assembly "Hangfire.AspNet" "Net45"
+    Collect-Assembly "Hangfire.AspNet" "net45"
 }
 
 Task Pack -Depends Collect -Description "Create NuGet packages and archive files." {
-    $version = Get-BuildVersion
-
-    $tag = $env:APPVEYOR_REPO_TAG_NAME
-    if ($tag -And $tag.StartsWith("v$version-")) {
-        "Using tag-based version for packages."
-        $version = $tag.Substring(1)
-    }
+    $version = Get-PackageVersion
     
     Create-Archive "Hangfire.AspNet-$version"
     Create-Package "Hangfire.AspNet" $version

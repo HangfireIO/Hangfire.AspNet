@@ -20,9 +20,9 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="Net45\Hangfire.AspNet.dll" target="lib\net45" />
-    <file src="Net45\Hangfire.AspNet.xml" target="lib\net45" />
-    <file src="Net45\Hangfire.AspNet.pdb" target="lib\net45" />
+    <file src="net45\Hangfire.AspNet.dll" target="lib\net45" />
+    <file src="net45\Hangfire.AspNet.xml" target="lib\net45" />
+    <file src="net45\Hangfire.AspNet.pdb" target="lib\net45" />
     <file src="..\src\Hangfire.AspNet\**\*.cs" target="src" />
   </files>
 </package>

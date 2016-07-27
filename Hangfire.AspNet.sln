@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuspecs", "nuspecs", "{9379
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{10680C76-AE48-45A8-B749-2955D3673073}"
 	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
 		psake-project.ps1 = psake-project.ps1
 	EndProjectSection
 EndProject
