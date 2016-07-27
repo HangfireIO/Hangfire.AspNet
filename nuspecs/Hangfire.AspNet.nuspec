@@ -11,11 +11,11 @@
     <licenseUrl>https://raw.githubusercontent.com/HangfireIO/Hangfire.AspNet/master/LICENSE</licenseUrl>
     <description>ASP.NET integration for Hangfire.</description>
     <copyright>Copyright © 2016 Sergey Odinokov</copyright>
-    <tags>hangfire aspnet iis</tags>
+    <tags>Hangfire AspNet IIS</tags>
     <releaseNotes>http://hangfire.io/blog/
     </releaseNotes>
     <dependencies>
-      <dependency id="Hangfire.Core" version="1.5.0" />
+      <dependency id="Hangfire.Core" version="1.6.0" />
       <dependency id="Microsoft.Owin.Host.SystemWeb" version="3.0.1" />
     </dependencies>
   </metadata>

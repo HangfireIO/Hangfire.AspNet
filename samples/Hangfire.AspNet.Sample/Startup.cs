@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Hangfire.MemoryStorage;
 using Owin;
 
 namespace Hangfire.AspNet.Sample
@@ -9,16 +8,16 @@ namespace Hangfire.AspNet.Sample
     {
         public static IEnumerable<IDisposable> GetHangfireConfiguration()
         {
-            GlobalConfiguration.Configuration.UseMemoryStorage();
+            GlobalConfiguration.Configuration
+                .UseSqlServerStorage(@"Server=.\sqlexpress;Database=Hangfire.AspNet;Integrated Security=SSPI;");
+
             yield return new BackgroundJobServer();
         }
 
         public void Configuration(IAppBuilder app)
         {
-            // TODO: This is needed only for development purposes
-            // TODO: Call this BEFORE dashboard
             app.UseHangfireAspNet(GetHangfireConfiguration);
-            app.UseHangfireDashboard();
+            app.UseHangfireDashboard("");
         }
     }
 }
