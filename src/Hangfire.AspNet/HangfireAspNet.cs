@@ -67,24 +67,42 @@ namespace Hangfire
 
                 foreach (var disposable in _disposables)
                 {
-                    var processingServer = disposable as BackgroundProcessingServer;
-                    processingServer?.SendStop();
-
-                    var jobServer = disposable as BackgroundJobServer;
-                    jobServer?.SendStop();
+                    StopInstance(disposable);
                 }
 
                 foreach (var disposable in _disposables)
                 {
-                    try
-                    {
-                        disposable?.Dispose();
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.ErrorException("An exception occurred while shutting down processing server: ", ex);
-                    }
+                    DisposeInstance(disposable);
                 }
+            }
+        }
+
+        private static void StopInstance(IDisposable disposable)
+        {
+            try
+            {
+                var processingServer = disposable as BackgroundProcessingServer;
+                processingServer?.SendStop();
+
+                var jobServer = disposable as BackgroundJobServer;
+                jobServer?.SendStop();
+            }
+            catch (Exception ex)
+            {
+                Logger.ErrorException("An exception occurred while sending 'Stop' signal: ", ex);
+                throw;
+            }
+        }
+
+        private static void DisposeInstance(IDisposable disposable)
+        {
+            try
+            {
+                disposable?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Logger.ErrorException("An exception occurred while disposing processing server: ", ex);
             }
         }
 
