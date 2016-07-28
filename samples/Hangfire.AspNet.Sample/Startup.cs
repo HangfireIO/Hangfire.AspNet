@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Web.Hosting;
-using Hangfire.Server;
 using Owin;
 using Serilog;
 
@@ -30,8 +29,7 @@ namespace Hangfire.AspNet.Sample
         {  
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Verbose()
-                .Enrich.With<AppDomainIdEnricher>()
-                .WriteTo.File($@"C:\Temp\Hangfire.AspNet.Sample.{AppDomain.CurrentDomain.Id}.log", outputTemplate: "{Timestamp} [{Level}] ({AppDomainId}) {Message}{NewLine}{Exception}")
+                .WriteTo.File($@"C:\Temp\Hangfire.AspNet.Sample.{AppDomain.CurrentDomain.Id}.log")
                 .CreateLogger();
 
             Log.Logger.Information("Application started.");
@@ -42,7 +40,7 @@ namespace Hangfire.AspNet.Sample
 
         public void Stop(bool immediate)
         {
-            Thread.Sleep(TimeSpan.FromSeconds(29));
+            Thread.Sleep(TimeSpan.FromSeconds(30));
             HostingEnvironment.UnregisterObject(this);
         }
     }

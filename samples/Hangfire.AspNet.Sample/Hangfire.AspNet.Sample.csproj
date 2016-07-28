@@ -127,7 +127,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppDomainIdEnricher.cs" />
     <Compile Include="App_Start\ApplicationPreload.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
