@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using Serilog;
 
 namespace Hangfire.AspNet.Sample
 {
@@ -9,6 +10,11 @@ namespace Hangfire.AspNet.Sample
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_End()
+        {
+            Log.Logger.Information("Application_End method called.");
         }
     }
 }

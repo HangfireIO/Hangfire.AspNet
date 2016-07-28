@@ -37,8 +37,6 @@ namespace Hangfire.AspNet
                 return !IIS.Value.CheckConfigChanged();
             }
         }
-
-        public static bool CanDetectAppDomainRestart => IIS.Value.CheckConfigChanged != null;
         
         private class UnsafeIISMethodsWrapper
         {

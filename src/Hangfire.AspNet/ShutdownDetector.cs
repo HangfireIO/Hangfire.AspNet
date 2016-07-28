@@ -23,12 +23,13 @@ using Hangfire.Logging;
 
 namespace Hangfire.AspNet
 {
-    internal class ShutdownDetector : IRegisteredObject, IDisposable
+    internal sealed class ShutdownDetector : IRegisteredObject, IDisposable
     {
         private static readonly ILog Logger = LogProvider.For<ShutdownDetector>();
+        private static readonly TimeSpan CheckForShutdownTimerInterval = TimeSpan.FromSeconds(10);
 
         private readonly CancellationTokenSource _cts;
-        private IDisposable _checkAppPoolTimer;
+        private IDisposable _checkForShutdownTimer;
 
         public ShutdownDetector()
         {
@@ -43,22 +44,33 @@ namespace Hangfire.AspNet
             try
             {
                 HostingEnvironment.RegisterObject(this);
-
-                // Normally when the AppDomain shuts down IRegisteredObject.Stop gets called, except that
-                // ASP.NET waits for requests to end before calling IRegisteredObject.Stop. This can be
-                // troublesome for some frameworks like SignalR that keep long running requests alive.
-                // These are more aggressive checks to see if the app domain is in the process of being shutdown and
-                // we trigger the same cts in that case.
+                
+                // Normally when the AppDomain shuts down, IRegisteredObject.Stop method gets called,
+                // except when ASP.NET waits for requests to end before calling IRegisteredObject.Stop.
+                // Pending requests may prevent background processing from stopping, leaving processing
+                // servers as zombies, because another instance was started, and we aren't expecting that
+                // an old one will continue to process background jobs.
+                // So we are using more aggressive checks, in addition to IRegisteredObject.Stop method,
+                // to be able to shutdown the processing regardless of any pending HTTP requests. In fact,
+                // any signal that AppDomain is going to shutdown should trigger the processing to stop.
                 if (HttpRuntime.UsingIntegratedPipeline)
                 {
+                    // StopListening event is triggered by IIS, to signal that no new request should
+                    // be served by this application instance anymore. We should stop the background
+                    // processing also.
                     RegisterForStopListeningEvent();
 
-                    if (UnsafeIISMethods.CanDetectAppDomainRestart)
-                    {
-                        // Create a timer for polling when the app pool has been requested for shutdown.
-                        _checkAppPoolTimer = new Timer(CheckForAppDomainRestart, state: null,
-                            dueTime: TimeSpan.FromSeconds(10), period: TimeSpan.FromSeconds(10));
-                    }
+                    // When AppDomain is unloaded due to bin directory change during deployments, there
+                    // is no any chance to get any notification, before IRegisteredObject.Stop is
+                    // triggered. I've investigated ASP.NET source code for about a week, and found
+                    // that timer with checking for shutdown reason is the only suitable way to get
+                    // to know that application is going to shutdown.
+                    _checkForShutdownTimer = new Timer(CheckForAppDomainShutdown, state: null,
+                        dueTime: CheckForShutdownTimerInterval, period: CheckForShutdownTimerInterval);
+                }
+                else
+                {
+                    throw new NotSupportedException("Classic Pipeline is not supported. Switch your application pool to use Integrated Pipeline");
                 }
             }
             catch (Exception ex)
@@ -66,35 +78,40 @@ namespace Hangfire.AspNet
                 Logger.ErrorException("Shutdown detection setup failed:", ex);
             }
         }
-
-        // Note: When we have a compilation that targets .NET 4.5.1, implement IStopListeningRegisteredObject
-        // instead of reflecting for HostingEnvironment.StopListening.
-        private bool RegisterForStopListeningEvent()
+        
+        private void RegisterForStopListeningEvent()
         {
             var stopEvent = typeof(HostingEnvironment).GetEvent("StopListening");
-            if (stopEvent == null)
-            {
-                return false;
-            }
+            if (stopEvent == null) return;
+
             stopEvent.AddEventHandler(null, new EventHandler(StopListening));
-            return true;
+            Logger.Trace("StopListening even handler registered successfully.");
         }
 
         private void StopListening(object sender, EventArgs e)
         {
+            Logger.Trace("StopListening event triggered.");
             Cancel();
         }
 
-        private void CheckForAppDomainRestart(object state)
+        private void CheckForAppDomainShutdown(object state)
         {
             if (UnsafeIISMethods.RequestedAppDomainRestart)
             {
+                Logger.Trace("`RequestedAppDomainRestart` triggered.");
+                Cancel();
+            }
+            
+            if (HostingEnvironment.ShutdownReason != ApplicationShutdownReason.None)
+            {
+                Logger.Trace("HostingEnvironment.ShutdownReason != None triggered.");
                 Cancel();
             }
         }
 
         public void Stop(bool immediate)
         {
+            Logger.Trace("IRegisteredObject.Stop method called.");
             Cancel();
             HostingEnvironment.UnregisterObject(this);
         }
@@ -102,7 +119,9 @@ namespace Hangfire.AspNet
         private void Cancel()
         {
             // Stop the timer as we don't need it anymore
-            _checkAppPoolTimer?.Dispose();
+            _checkForShutdownTimer?.Dispose();
+
+            Logger.Debug($"Application instance is shutting down: {HostingEnvironment.ShutdownReason}.");
 
             // Trigger the cancellation token
             try
@@ -114,22 +133,14 @@ namespace Hangfire.AspNet
             }
             catch (AggregateException ag)
             {
-                Logger.ErrorException("One or more exceptions were thrown during app pool shutdown:", ag);
+                Logger.ErrorException("One or more exceptions were thrown during app pool shutdown: ", ag);
             }
         }
 
         public void Dispose()
         {
-            Dispose(true);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _cts.Dispose();
-                _checkAppPoolTimer?.Dispose();
-            }
+            _cts.Dispose();
+            _checkForShutdownTimer?.Dispose();
         }
     }
 }
