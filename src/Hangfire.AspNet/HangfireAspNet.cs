@@ -21,7 +21,7 @@ namespace Hangfire
         private static bool _started;
         private static IDisposable[] _disposables;
 
-        public static CancellationToken ShutdownToken =>
+        public static CancellationToken AppDomainShutdownToken =>
             LazyInitializer.EnsureInitialized(ref _detector, InitShutdownDetector).Token;
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Hangfire
 
                 _disposables = configuration()?.ToArray();
 
-                ShutdownToken.Register(StopInstances);
+                AppDomainShutdownToken.Register(StopInstances);
             }
         }
 
