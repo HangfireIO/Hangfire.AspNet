@@ -10,3 +10,4 @@ This package also includes a Powershell script to enable Always Running mode for
 
 This package aims to replace the documentation article *Making ASP.NET application always running*.
 
+Documentation is pending, please see https://github.com/HangfireIO/Hangfire.Highlighter.
