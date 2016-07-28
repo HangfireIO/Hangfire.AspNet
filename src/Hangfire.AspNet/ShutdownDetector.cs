@@ -102,6 +102,7 @@ namespace Hangfire.AspNet
                 Cancel();
             }
             
+            // TODO: HostingEnvironment.ShutdownReason doesn't use any locks, when reading/writing the value
             if (HostingEnvironment.ShutdownReason != ApplicationShutdownReason.None)
             {
                 Logger.Trace("HostingEnvironment.ShutdownReason != None triggered.");
