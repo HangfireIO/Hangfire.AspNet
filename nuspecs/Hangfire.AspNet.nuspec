@@ -13,6 +13,12 @@
     <copyright>Copyright © 2016 Sergey Odinokov</copyright>
     <tags>Hangfire AspNet IIS</tags>
     <releaseNotes>http://hangfire.io/blog/
+    
+0.2.0
+• Added – `AuthorizationFilter` and `ClaimsAuthorizationFilter` classes.
+    
+0.1.0 – Initial Release
+    
     </releaseNotes>
     <dependencies>
       <dependency id="Hangfire.Core" version="1.6.0" />
