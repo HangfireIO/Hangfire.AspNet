@@ -16,6 +16,7 @@
     </releaseNotes>
     <dependencies>
       <dependency id="Hangfire.Core" version="1.6.0" />
+      <dependency id="Microsoft.Owin" version="3.0.1" />
       <dependency id="Microsoft.Owin.Host.SystemWeb" version="3.0.1" />
     </dependencies>
   </metadata>
@@ -23,6 +24,6 @@
     <file src="net45\Hangfire.AspNet.dll" target="lib\net45" />
     <file src="net45\Hangfire.AspNet.xml" target="lib\net45" />
     <file src="net45\Hangfire.AspNet.pdb" target="lib\net45" />
-    <file src="..\src\Hangfire.AspNet\**\*.cs" target="src" />
+    <file src="..\src\Hangfire.AspNet\**\*.cs" target="src" exclude="**\obj*\**\*.cs" />
   </files>
 </package>

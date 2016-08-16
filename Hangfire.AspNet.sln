@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{10680C76
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.AspNet.Sample", "samples\Hangfire.AspNet.Sample\Hangfire.AspNet.Sample.csproj", "{1C747619-39DE-4B3F-907B-F5A94263674D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.AspNet.Tests", "tests\Hangfire.AspNet.Tests\Hangfire.AspNet.Tests.csproj", "{5DDF5E64-297B-46E1-935C-3FA079F607C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{1C747619-39DE-4B3F-907B-F5A94263674D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C747619-39DE-4B3F-907B-F5A94263674D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C747619-39DE-4B3F-907B-F5A94263674D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DDF5E64-297B-46E1-935C-3FA079F607C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DDF5E64-297B-46E1-935C-3FA079F607C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DDF5E64-297B-46E1-935C-3FA079F607C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DDF5E64-297B-46E1-935C-3FA079F607C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
