@@ -1,5 +1,7 @@
 # Hangfire.AspNet
 
+[`Install-Package Hangfire.AspNet`](https://www.nuget.org/packages/Hangfire.AspNet/)
+
 [![GitHub release](https://img.shields.io/github/release/HangfireIO/Hangfire.AspNet.svg?maxAge=3600)](https://github.com/HangfireIO/Hangfire.IIS/releases)
 [![license](https://img.shields.io/github/license/HangfireIO/Hangfire.AspNet.svg?maxAge=3600)](https://github.com/HangfireIO/Hangfire.IIS/blob/master/LICENSE)
 [![Build status](https://ci.appveyor.com/api/projects/status/ywkl7xx1022odi7m?svg=true)](https://ci.appveyor.com/project/odinserj/hangfire-aspnet)
