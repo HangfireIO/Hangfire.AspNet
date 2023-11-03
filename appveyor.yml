@@ -19,7 +19,7 @@ os: Visual Studio 2015
 branches:
   # whitelist
   only:
-    - master
+    - main
     - dev
 
 shallow_clone: true
