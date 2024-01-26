@@ -56,7 +56,6 @@ x64/
 .vs/
 
 # DNX
-project.lock.json
 artifacts/
 
 # MSTest test Results
