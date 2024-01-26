@@ -29,7 +29,7 @@ namespace Hangfire.AspNet
         private static readonly TimeSpan CheckForShutdownTimerInterval = TimeSpan.FromSeconds(10);
 
         private readonly CancellationTokenSource _cts;
-        private IDisposable _checkForShutdownTimer;
+        private Timer _checkForShutdownTimer;
 
         public ShutdownDetector()
         {

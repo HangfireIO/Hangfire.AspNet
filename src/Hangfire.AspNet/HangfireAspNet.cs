@@ -136,6 +136,7 @@ namespace Hangfire
             }
         }
 
+        [SuppressMessage("Design", "CA1031:Do not catch general exception types")]
         private static void DisposeInstance(IDisposable disposable)
         {
             try

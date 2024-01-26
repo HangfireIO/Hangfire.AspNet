@@ -46,12 +46,12 @@ namespace Hangfire
         }
 
         /// <inheritdoc />
-        public bool Authorize(DashboardContext dashboardContext)
+        public bool Authorize(DashboardContext context)
         {
-            var context = _contextAccessor(dashboardContext);
+            var owinContext = _contextAccessor(context);
             
-            return context.Authentication.User != null &&
-                   context.Authentication.User.HasClaim(_type, _value);
+            return owinContext.Authentication.User != null &&
+                   owinContext.Authentication.User.HasClaim(_type, _value);
         }
     }
 }
