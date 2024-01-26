@@ -1,4 +1,6 @@
 <Project>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
     <!-- Custom AssemblyInfo.cs file -->
     <PropertyGroup>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
