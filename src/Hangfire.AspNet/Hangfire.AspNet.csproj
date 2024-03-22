@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <None Include="AlwaysRunning.ps1" />
-    <None Include="packages.config" />
   </ItemGroup>
 
 </Project>
