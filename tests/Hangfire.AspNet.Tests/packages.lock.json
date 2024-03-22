@@ -164,8 +164,7 @@
           "Microsoft.CodeAnalysis.NetAnalyzers": "[8.0.0, )",
           "Microsoft.NETFramework.ReferenceAssemblies": "[1.0.3, )",
           "Microsoft.Owin": "[3.0.1, )",
-          "Microsoft.SourceLink.GitHub": "[8.0.0, )",
-          "Newtonsoft.Json": "[5.0.1, )"
+          "Microsoft.SourceLink.GitHub": "[8.0.0, )"
         }
       }
     }
