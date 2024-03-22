@@ -10,6 +10,7 @@
     <repository type="git" url="https://github.com/HangfireIO/Hangfire.AspNet.git" commit="%commit%" />
     <license type="expression">MIT</license>
     <description>ASP.NET integration for Hangfire.</description>
+    <icon>icon.png</icon>
     <copyright>Copyright © 2016-2024 Hangfire OÜ</copyright>
     <tags>Hangfire AspNet IIS</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.AspNet/releases
@@ -31,5 +32,7 @@
   <files>
     <file src="net45\Hangfire.AspNet.dll" target="lib\net45" />
     <file src="net45\Hangfire.AspNet.xml" target="lib\net45" />
+
+    <file src="..\nuspecs\icon.png" />
   </files>
 </package>
