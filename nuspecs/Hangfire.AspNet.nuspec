@@ -14,6 +14,14 @@
     <copyright>Copyright © 2016-2024 Hangfire OÜ</copyright>
     <tags>Hangfire AspNet IIS</tags>
     <releaseNotes>https://github.com/HangfireIO/Hangfire.AspNet/releases
+
+0.3.0
+• Project – Full source link support with embedded symbols and repository-based sources.
+• Project – Enable static analysis via the Microsoft.CodeAnalysis.NetAnalyzers package.
+• Project – Sign NuGet package and .NET assemblies with a code signing certificate.
+• Project – Require signature validation when restoring NuGet packages.
+• Project – Use deterministic and locked package restore for projects.
+• Project – Add more metadata for assemblies and NuGet package.
     
 0.2.0
 • Added – `AuthorizationFilter` and `ClaimsAuthorizationFilter` classes.
