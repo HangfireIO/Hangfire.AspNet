@@ -34,5 +34,6 @@
     <file src="net45\Hangfire.AspNet.xml" target="lib\net45" />
 
     <file src="..\nuspecs\icon.png" />
+    <file src="LICENSE" />
   </files>
 </package>
