@@ -7,7 +7,7 @@ This package provides recommended way to install Hangfire to ASP.NET application
 
 The package also includes a Powershell script to enable Always Running mode for your application that is based on Service Autostart Providers.
 
-The package aims to replace the documentation article *Making ASP.NET application always running*.
+The package aims to replace the documentation article [Making ASP.NET application always running](https://docs.hangfire.io/en/latest/deployment-to-production/making-aspnet-app-always-running.html).
 
 ## Installation
 
